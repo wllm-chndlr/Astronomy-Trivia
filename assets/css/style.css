@@ -1,0 +1,28 @@
+html {
+	background-color: #222831;
+}
+
+body {
+	font-family: 'Oswald', sans-serif;
+	background-color: transparent;
+}
+
+.jumbotron {
+	text-align: center;
+	color: #393E46;
+	background-color: #F96D00;
+	font-family: 'Anton', sans-serif;
+}
+
+#main {
+	height: 500px;
+	color: white;
+	width: 80%;
+	margin: auto;
+	background-color: #393E46;
+}
+
+#start-game {
+	background-color: #393E46;
+	border-color: #fff;	
+}
