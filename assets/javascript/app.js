@@ -1,10 +1,5 @@
 // ON LOAD
-
-// window.onload = function() {
-// $("#main").html('<a class="btn btn-primary btn-lg" id="start-button" role="button">Start game</a>');
-// };
-
-// $("#start-button").click(alert("hey there"));
+$(document).ready(function() {
 
 $("#start-game").on("click", run);
 
@@ -17,26 +12,26 @@ var unanswered = 0;
 var countdown = 10;
 var intervalId;
 
-var qA = {
-
-	questions: 
-	[
-		"In what month is the Earth closest to the sun?", 
-		"What is the capital of Sweden?"
-	],
-	answers: 
-	[
-		["February", "January", "September", "December"], 
-		["Norway", "Scandinavia", "Austin", "Stockholm"]
-	]
-
-};
-
-var arrCorrect = [qA.answers[0][1], qA.answers[1][3]];
-// console.log(arrCorrect);
-
+var qaArray = [
+	{
+		question: "In what month is the Earth closest to the sun?",
+		answers: ["February", "January", "September", "December"],
+		// pic_correct: 'PATH',
+		// pic_wrong: 'PATH',
+		correctanswer: 2
+	},
+	{
+		question: "What is the capital of Sweden?",
+		answers: ["Norway", "Scandinavia", "Austin", "Stockholm"],
+		// pic_correct: 'PATH',
+		// pic_wrong: 'PATH',
+		correctanswer: 4
+	}
+	];
 
 // FUNCTIONS 
+
+
 
 function run() {
 	intervalId = setInterval(decrement, 1000);
@@ -63,22 +58,45 @@ function reset() {
 
 function launchQA() {
 	
-	for (var i = 0; i < qA.questions.length; i++) {
-	
-	$("#questions").html("<h2>" + qA.questions[i] + "</h2>");
-	$("#answer0").html("<h3>" + qA.answers[i][0] + "</h3>");
-	$("#answer1").html("<h3>" + qA.answers[i][1] + "</h3>");
-	$("#answer2").html("<h3>" + qA.answers[i][2] + "</h3>");
-	$("#answer3").html("<h3>" + qA.answers[i][3] + "</h3>");
+	for (var i = 0; i < qaArray[i].length; i++) {
 	};
 
+	$("#questions").html("<h2>" + qaArray[i].question + "</h2>");
+	$("#answer0").html("<h3>" + qaArray[i].answers[0] + "</h3>");
+	$("#answer1").html("<h3>" + qaArray[i].answers[1] + "</h3>");
+	$("#answer2").html("<h3>" + qaArray[i].answers[2] + "</h3>");
+	$("#answer3").html("<h3>" + qaArray[i].answers[3] + "</h3>");
 
 
-	jQuery(".answer").click(function() {
-    var userChoice = jQuery(this).attr("id");
-    console.log(userChoice);
-    return userChoice;
-	});
+	console.log(qaArray[i].question);
+	console.log(qaArray[i].answers[0]);
+	console.log(qaArray[i].answers[1]);
+
+}
+
+})
+
+	// userChoice.attr("data-answervalue", qA.answers[i]);
+
+
+
+	// var userChoice = $(".answer").on("click", function() {
+	// 	console.log(this.)
+
+	// jQuery(".answer").click(function() {
+ //    var userChoice = jQuery(this).attr("value");
+ //    console.log(userChoice);
+ //    return userChoice;
+
+ //    	if (userChoice === arrCorrect[i]) {
+	// 		alert("Correct!");
+	// 	}
+
+	// 	else {
+	// 		alert("incorrect!");
+	// 	}
+
+	// });
 
 	// console.log(userChoice);
 
@@ -88,12 +106,23 @@ function launchQA() {
 	// });
 	
 
-	// if (userChoice === arrCorrect[i]) {
-	// 	alert("Correct!");
-	// }
+// var qA = {
 
-}
+// 	questions: 
+// 	[
+// 		"In what month is the Earth closest to the sun?", 
+// 		"What is the capital of Sweden?"
+// 	],
+// 	answers: 
+// 	[
+// 		["February", "January", "September", "December"], 
+// 		["Norway", "Scandinavia", "Austin", "Stockholm"]
+// 	]
 
+// };
+
+// var arrCorrect = [qA.answers[0][1], qA.answers[1][3]];
+// console.log(arrCorrect);
 
 
 
