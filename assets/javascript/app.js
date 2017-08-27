@@ -1,42 +1,40 @@
 // ON LOAD
+
 $(document).ready(function() {
 
-$("#start-game").on("click", run);
+$("#start-game").on("click", launchQA);
 
 // GLOBAL VARIABLES
 
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var unanswered = 0;
-
+var i = 0;
 var countdown = 10;
 var intervalId;
 
 var qaArray = [
 	{
-		question: "In what month is the Earth closest to the sun?",
-		answers: ["February", "January", "September", "December"],
+		question: "The Moon is moving away from the Earth by how much every year?",
+		answers: ["3.8cm", "3.7m", "3.8km", "3.8 light years"],
+		correctAnswerIndex: 0
 		// pic_correct: 'PATH',
 		// pic_wrong: 'PATH',
-		correctanswer: 2
 	},
 	{
-		question: "What is the capital of Sweden?",
-		answers: ["Norway", "Scandinavia", "Austin", "Stockholm"],
+		question: "In what month is the Earth closest to the sun?",
+		answers: ["February", "January", "September", "December"],
+		correctAnswerIndex: 1
 		// pic_correct: 'PATH',
 		// pic_wrong: 'PATH',
-		correctanswer: 4
+
 	}
 	];
 
 // FUNCTIONS 
 
-
-
-function run() {
+function startCountdown() {
 	intervalId = setInterval(decrement, 1000);
-	$("button").remove();
-	launchQA();
 }
 
 function decrement() {
@@ -44,20 +42,20 @@ function decrement() {
 	$("#countdown").html("<h2>Time remaining: " + countdown + "</h2>");
 		if (countdown === 0) {
 	    stop();
-	    console.log("Time Up!");
-	}
+	    timeUp();
+	    // console.log("Time Up!");
+		}
 }
 
 function stop() {
 	clearInterval(intervalId);
 }
 
-function reset() {
-	$("button").show();
-}
-
 function launchQA() {
-	
+
+	$("button").remove();
+	startCountdown();
+
 	for (var i = 0; i < qaArray[i].length; i++) {
 	};
 
@@ -67,71 +65,61 @@ function launchQA() {
 	$("#answer2").html("<h3>" + qaArray[i].answers[2] + "</h3>");
 	$("#answer3").html("<h3>" + qaArray[i].answers[3] + "</h3>");
 
-
-	console.log(qaArray[i].question);
-	console.log(qaArray[i].answers[0]);
-	console.log(qaArray[i].answers[1]);
+  $('.answer').click(function() {
+  	stop();
+  	var userAnswer = $('.answer').index(this);
+	  	if (userAnswer === qaArray[i].correctAnswerIndex) {
+				correctAnswer();
+				// advance();
+	  	}
+	  	else {
+				incorrectAnswer();
+				// advance();
+	  	}
+  });
 
 }
 
-})
+function correctAnswer() {
+	$('#main-panel').empty().html("<h3>Correct!</h3>");
+	correctAnswers++;
+	console.log("Correct answers: " + correctAnswers);
+	advance();
+}
 
-	// userChoice.attr("data-answervalue", qA.answers[i]);
+function incorrectAnswer() {
+	$('#main-panel').empty().html("<h3>Stupid! You're so stupid! <br><br> The correct answer was " + qaArray[i].answers[correctAnswerIndex] + ".</h3>");
+	incorrectAnswers++;
+	console.log("Incorrect answers: " + incorrectAnswers);
+	console.log(qaArray[i].answers[correctAnswerIndex]);
+	advance();
+}
 
+function timeUp() {
+	$('#main-panel').empty().html("<h3>Time's up! <br><br> The correct answer was XXXXX.</h3>");
+	unanswered++;
+	console.log("Unanswered: " + unanswered);
+	advance();
+}
 
+function advance() {
+	i++;
+}
 
-	// var userChoice = $(".answer").on("click", function() {
-	// 	console.log(this.)
+function resultScreen() {
+	$("#questions").html("All done!");
+	$('#answer0').html("Correct answers: " + correctAnswers);
+	$('#answer1').html("Incorrect answers: " + incorrectAnswers);
+	$('#answer2').html("Unanswered: " + unanswered);
+	$('#results').html("Start over?"); // need to add reset
+}
 
-	// jQuery(".answer").click(function() {
- //    var userChoice = jQuery(this).attr("value");
- //    console.log(userChoice);
- //    return userChoice;
+function reset() {
+	$("button").show();
+	launchQA();
+}
 
- //    	if (userChoice === arrCorrect[i]) {
-	// 		alert("Correct!");
-	// 	}
-
-	// 	else {
-	// 		alert("incorrect!");
-	// 	}
-
-	// });
-
-	// console.log(userChoice);
-
-
-	// $('.answer').click(function(){
-	//     console.log(this.id);
-	// });
-	
-
-// var qA = {
-
-// 	questions: 
-// 	[
-// 		"In what month is the Earth closest to the sun?", 
-// 		"What is the capital of Sweden?"
-// 	],
-// 	answers: 
-// 	[
-// 		["February", "January", "September", "December"], 
-// 		["Norway", "Scandinavia", "Austin", "Stockholm"]
-// 	]
-
-// };
-
-// var arrCorrect = [qA.answers[0][1], qA.answers[1][3]];
-// console.log(arrCorrect);
-
-
-
-
-
-// MAIN PROCESS
-
-
-
+});
 
 
 

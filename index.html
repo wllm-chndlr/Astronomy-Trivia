@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- link to Google font(s) -->
-    <link href="https://fonts.googleapis.com/css?family=Anton|Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Inconsolata|Oswald" rel="stylesheet">
     
     <!-- link to my css -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -26,17 +26,21 @@
 
       <div class="jumbotron">
         <h1>TRIVIA GAME</h1>
+      </div>
+
+      <div class=button">
         <button id="start-game" class="btn btn-primary btn-lg">Start game</button>
+      </div>
+
+      <div class="countdown">
+        <div id="countdown"></div>
       </div>
 
       <div class="panel panel-default" id="main">
         
         <div class="panel-body" id="main-panel">
         
-          <div id="countdown"> </div>
-
-          <span id="questions"></span>
-
+          <div id="questions"></div>
           <div class="answer" id="answer0"></div>
           <div class="answer" id="answer1"></div>
           <div class="answer" id="answer2"></div>
@@ -45,8 +49,6 @@
           <div id="status"></div>
 
           <div id="results"></div>
-
-
 
         </div>
       
