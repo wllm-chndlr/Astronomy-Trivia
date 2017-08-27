@@ -22,7 +22,15 @@ body {
 	background-color: #393E46;
 }
 
+#main-panel {
+	padding-left: 50px;
+}
+
 #start-game {
 	background-color: #393E46;
 	border-color: #fff;	
+}
+
+#answer0, #answer1, #answer2, #answer3 {
+	cursor: pointer;
 }
