@@ -1,0 +1,103 @@
+
+<!-- components -->
+
+start button
+restart button
+
+
+<!-- question page -->
+
+Time remaining: 
+Question:  (1)
+Answers:  (4)
+
+
+<!-- result page -->
+
+Correct! 
+
+Incorrect!
+The correct answer was: ________
+
+Out of time!
+The correct answer was: ________
+
+
+<!-- at the end -->
+
+All done!
+Correct answers: 
+Incorrect answers:
+Unanswered:
+Start over?
+
+
+<!-- functions -->
+
+start
+countdown
+reset
+
+
+<!-- MAIN PROCESS -->
+
+
+
+click start button (start function)
+
+begin loop
+
+launch first question/answer combo (replace button)
+countdown begins (countdown function)
+
+	if user selects answer {
+
+		stop countdown
+
+		if correct {
+			alert 'correct'
+			wait 3 seconds
+			launch new question/answer combo
+		}
+
+		if incorrect {
+			alert 'incorrect'
+			alert 'correct answer: ____'
+			wait 3 seconds
+			launch new question/answer combo
+		}
+
+	else (time runs out) {
+			alert 'time ran out'
+			alert 'correct answer: ____'
+			wait 3 seconds 
+			launch new question/answer combo
+	}
+
+when loop ends:
+	All done!
+	Correct answers: 
+	Incorrect answers:
+	Unanswered:
+	Start over? (reset function)
+
+
+
+
+arr[i].question
+arr[i].answer1
+arr[i].answer2
+arr[i].answer3
+arr[i].answer4
+
+var myObj = { 
+    fred: { apples: 2, oranges: 4, bananas: 7, melons: 0 }, 
+    mary: { apples: 0, oranges: 10, bananas: 0, melons: 0 }, 
+    sarah: { apples: 0, oranges: 0, bananas: 0, melons: 5 } 
+}
+
+
+
+
+
+

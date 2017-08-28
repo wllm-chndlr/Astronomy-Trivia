@@ -15,8 +15,8 @@ var intervalId;
 
 var qaArray = [
 	{
-		question: "The Moon is moving away from the Earth by how much every year?",
-		answers: ["3.8cm", "3.7m", "3.8km", "3.8 light years"],
+		question: "How far is the Moon moving away from the Earth each year?",
+		answers: ["3.8cm", "3.8m", "3.8km", "3.8 light years"],
 		correctAnswerIndex: 0
 		// pic_correct: 'PATH',
 		// pic_wrong: 'PATH',
