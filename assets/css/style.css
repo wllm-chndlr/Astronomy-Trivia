@@ -16,11 +16,10 @@ body {
 }
 
 #main {
-	height: 500px;
+	height: 400px;
 	color: white;
-	width: 80%;
-	margin: auto;
 	background-color: #393E46;
+	padding-left: 50px;
 }
 
 #main-panel {
@@ -36,4 +35,8 @@ body {
 
 #answer0, #answer1, #answer2, #answer3 {
 	cursor: pointer;
+}
+
+.countdown {
+	font-family: 'Inconsolata', monospace;
 }
