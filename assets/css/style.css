@@ -1,5 +1,6 @@
 html {
 	background-color: #fff;
+	background-image: url(../images/space_stars.jpg);
 }
 
 body {
@@ -8,29 +9,32 @@ body {
 }
 
 .jumbotron {
-	text-align: center;
+	/*text-align: center;*/
 	color: #fff;
-	background-color: #F96D00;
+	/*background-color: #F96D00;*/
+	background-color: transparent;
 	font-family: 'Anton', sans-serif;
 	margin-bottom: 10px;
+	opacity: 0.8;
+	/*background-image: url(../images/space_stars.jpg);*/
 }
 
 #main {
 	height: 400px;
 	color: white;
-	background-color: #393E46;
+	/*background-color: #393E46;*/
+	/*background-color: #cc3b36;*/
+	background-color: transparent;
 	padding-left: 50px;
-}
-
-#main-panel {
-	padding-left: 50px;
+	opacity: 0.8;
 }
 
 #start-game {
 	background-color: #393E46;
 	border-color: #fff;	
-	font-family: 'Inconsolata', monospace;
+	font-family: 'Oswald', sans-serif;
 	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 #answer0, #answer1, #answer2, #answer3 {
@@ -38,5 +42,6 @@ body {
 }
 
 .countdown {
-	font-family: 'Inconsolata', monospace;
+	font-family: 'Oswald', sans-serif;
+	color: #fff;
 }

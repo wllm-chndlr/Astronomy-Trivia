@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
 
-$("#start-game").on("click", launchQA);
+// $("#start-game").on("click", launchQA);
 
 // GLOBAL VARIABLES
 
@@ -31,7 +31,7 @@ var qaArray = [
 		correctAnswerIndex: 1
 	},
 	{
-		question: "Which planet's axial rotation is opposite to the other planets in the solar system?",
+		question: "All the planets in the solar system rotate in the same direction, except which?",
 		answers: ["Neptune", "Uranus", "Mars", "Venus"],
 		correctAnswerIndex: 3
 	},
@@ -59,7 +59,6 @@ function decrement() {
 		if (countdown === 0) {
 	    stop();
 	    timeUp();
-	    // console.log("Time Up!");
 		}
 }
 
@@ -131,6 +130,8 @@ function advance() {
 	else {
 		resultScreen();
 	}
+
+	// setTimeout(advance, 3000);
 	
 }
 
@@ -142,15 +143,25 @@ function resultScreen() {
 	$('#answer0').html("<h3>Correct answers: " + correctAnswers + "</h3>");
 	$('#answer1').html("<h3>Incorrect answers: " + incorrectAnswers + "</h3");
 	$('#answer2').html("<h3>Unanswered: " + unanswered + "</h3>");
-	$('#answer3').hide();
+	$('#answer3').html(" ");
 	$('#results').html("<h3>Start over?</h3>"); // need to add reset
 
 }
 
-function reset() {
+function startOver() {
 	$("button").show();
 	launchQA();
 }
 
+// MAIN PROCESS
+
+$("#start-game").on("click", launchQA);
 
 });
+
+
+
+
+
+
+
