@@ -13,8 +13,10 @@ var unanswered = 0;
 var countdown = 11;
 var intervalId;
 
+var userHasClickedOnAnswer = false;
+var timedOut = false;
+
 var blazingIndex = 0;
-// var correctAnswerIndex = 0;
 var correctAnswerIndex;
 
 var qaArray = [
@@ -36,7 +38,7 @@ var qaArray = [
 		correctAnswerIndex: 3
 	},
 	{
-		question: "The Sun's core releases the the equivalent of _______ nuclear bombs every second.",
+		question: "The Sun's core releases the energy equivalent of _______ nuclear bombs every second.",
 		answers: ["100,000", "100 million", "100 billion", "100 trillion"],
 		correctAnswerIndex: 2
 	},
@@ -72,6 +74,7 @@ function launchQA() {
 	countdown = 11;
 	startCountdown();
 
+
 	$("#questions").html("<h2>" + qaArray[blazingIndex].question + "</h2>");
 	$("#answer0").html("<h3>" + qaArray[blazingIndex].answers[0] + "</h3>");
 	$("#answer1").html("<h3>" + qaArray[blazingIndex].answers[1] + "</h3>");
@@ -86,6 +89,8 @@ function userGuess() {
 
 	$('.answer').click(function() {
   	stop();
+  	
+  	if (userHasClickedOnAnswer == false && timedOut !== true) {
   	var userAnswer = $('.answer').index(this);
 	  	if (userAnswer === qaArray[blazingIndex].correctAnswerIndex) {
 				correctAnswer();
@@ -93,10 +98,12 @@ function userGuess() {
 	  	else {
 				incorrectAnswer();
 	  	}
+		}
   })
 }
 
 function correctAnswer() {
+	userHasClickedOnAnswer = true;
 	// $('#main-panel').empty().html("<h3>Correct!</h3>");
 	$('#results').html("<h3>Correct!</h3>");
 	correctAnswers++;
@@ -105,6 +112,7 @@ function correctAnswer() {
 }
 
 function incorrectAnswer() {
+	userHasClickedOnAnswer = true;
 	// $('#main-panel').empty().html("<h3>Stupid! You're so stupid! <br><br> The correct answer was XXXXX.</h3>");
 	$('#results').html("<h3>Wrong!</h3>");
 	incorrectAnswers++;
@@ -113,6 +121,7 @@ function incorrectAnswer() {
 }
 
 function timeUp() {
+	timedOut = true;
 	// $('#main-panel').empty().html("<h3>Time's up! <br><br> The correct answer was XXXXX.</h3>");
 	$('#results').html("<h3>Time's up!</h3>");
 	unanswered++;
@@ -121,6 +130,10 @@ function timeUp() {
 }
 
 function advance() {
+
+	userHasClickedOnAnswer = false;
+	timedOut = false;
+
 	$('#results').empty();
 	blazingIndex++;
 

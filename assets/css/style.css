@@ -33,6 +33,7 @@ body {
 	background-color: #393E46;
 	border-color: #fff;	
 	font-family: 'Oswald', sans-serif;
+	color: #fff;
 	margin-bottom: 10px;
 	opacity: 0.8;
 }
@@ -44,4 +45,5 @@ body {
 .countdown {
 	font-family: 'Oswald', sans-serif;
 	color: #fff;
+	opacity: 0.8;
 }
