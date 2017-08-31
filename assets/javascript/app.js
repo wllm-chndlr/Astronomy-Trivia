@@ -21,18 +21,10 @@ var correctAnswerText;
 
 var qaArray = [
 	{
-		question: "How far is the Moon moving away from the Earth each year?",
-		answers: ["3.8cm", "3.8m", "3.8km", "3.8 light years"],
-		correctAnswerIndex: 0,
-		correctAnswerText: "3.8cm"
-		// pic_correct: 'PATH',
-		// pic_wrong: 'PATH',
-	},
-	{
-		question: "In what month is the Earth closest to the sun?",
-		answers: ["February", "January", "September", "December"],
-		correctAnswerIndex: 1,
-		correctAnswerText: "January"
+		question: "Neutron stars can spin at a rate of _______ rotations per second.",
+		answers: ["10", "100", "300", "600"],
+		correctAnswerIndex: 3,
+		correctAnswerText: "600"
 	},
 	{
 		question: "All the planets in the solar system rotate in the same direction, except which?",
@@ -51,6 +43,20 @@ var qaArray = [
 		answers: ["5%", "10%", "15%", "20%"],
 		correctAnswerIndex: 0,
 		correctAnswerText: "5%"
+	},
+	{
+		question: "The Sun accounts for 99% of our solar system's mass.",
+		answers: ["25%", "50%", "75%", "99%"],
+		correctAnswerIndex: 3,
+		correctAnswerText: "99%"
+	},
+	{
+		question: "How far is the Moon moving away from the Earth each year?",
+		answers: ["3.8cm", "3.8m", "3.8km", "3.8 light years"],
+		correctAnswerIndex: 0,
+		correctAnswerText: "3.8cm"
+		// pic_correct: 'PATH',
+		// pic_wrong: 'PATH',
 	}
 ];
 
@@ -62,7 +68,7 @@ function startCountdown() {
 
 function decrement() {
 	countdown--;
-	$("#countdown").html("<h2>Timer: " + countdown + "</h2>");
+	$("#countdown").html("<h2>Time left before implosion: " + countdown + "</h2>");
 		if (countdown === 0) {
 	    stop();
 	    timeUp();
@@ -78,7 +84,7 @@ function launchQA() {
 	$("button").hide();
 	countdown = 11;
 	startCountdown();
-
+	$('#countdown').show();
 
 	$("#questions").html("<h2>" + qaArray[blazingIndex].question + "</h2>");
 	$("#answer0").html("<h3>" + qaArray[blazingIndex].answers[0] + "</h3>");
@@ -93,7 +99,8 @@ function launchQA() {
 function userGuess() {
 
 	$('.answer').click(function() {
-  	stop();
+	  stop();
+	  $('#countdown').hide().empty();
   	
   	if (userHasClickedOnAnswer == false && timedOut !== true) {
   	var userAnswer = $('.answer').index(this);
@@ -116,7 +123,7 @@ function correctAnswer() {
 
 function incorrectAnswer() {
 	userHasClickedOnAnswer = true;
-	$('#results').html("<h3>Wrong! The correct answer was " + qaArray[blazingIndex].correctAnswerText + ".</h3>");
+	$('#results').html("<h3>Wrong! The correct answer is " + qaArray[blazingIndex].correctAnswerText + ". <br>Your body is hereby committed to the cold vacuum of space.</h3>");
 	$('#imgif').html("<img src='http://gph.is/QEbSYA'>");
 	incorrectAnswers++;
 	setTimeout(advance, 3000);
@@ -124,7 +131,8 @@ function incorrectAnswer() {
 
 function timeUp() {
 	timedOut = true;
-	$('#results').html("<h3>Time's up! The correct answer was " + qaArray[blazingIndex].correctAnswerText + ".</h3>");
+	$('#results').html("<h3>Time's up! (Although time is just a construct.) <br> The correct answer is " + qaArray[blazingIndex].correctAnswerText + ".</h3>");
+	$('#countdown').hide().empty();
 	unanswered++;
 	setTimeout(advance, 3000);
 }
@@ -133,12 +141,13 @@ function advance() {
 
 	userHasClickedOnAnswer = false;
 	timedOut = false;
-
+	
 	$('#results').empty();
 	blazingIndex++;
 
 	if (blazingIndex < qaArray.length) {
 		launchQA();
+		// countdown = 11;
 	}
 	else {
 		resultScreen();
@@ -152,7 +161,7 @@ function resultScreen() {
 
 	stop();
 	timedOut = false;
-	// $('#countdown').hide();
+	$('#countdown').hide();
 
 	$("#questions").html("<h3>All done!</h3");
 	$('#answer0').html("<h3>Correct answers: " + correctAnswers + "</h3>");
