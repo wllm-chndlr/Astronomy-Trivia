@@ -21,7 +21,7 @@ body {
 
 #main {
 	height: 400px;
-	color: white;
+	color: #fff;
 	/*background-color: #393E46;*/
 	/*background-color: #cc3b36;*/
 	background-color: transparent;
@@ -29,8 +29,9 @@ body {
 	opacity: 0.8;
 }
 
-#start-game {
-	background-color: #393E46;
+#start-game, #start-over {
+	/* background-color: #393E46; */
+	background-color: transparent;
 	border-color: #fff;	
 	font-family: 'Oswald', sans-serif;
 	color: #fff;
@@ -46,4 +47,8 @@ body {
 	font-family: 'Oswald', sans-serif;
 	color: #fff;
 	opacity: 0.8;
+}
+
+#results {
+	color: orange;
 }

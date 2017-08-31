@@ -2,50 +2,55 @@
 
 $(document).ready(function() {
 
-// $("#start-game").on("click", launchQA);
+	$('#start-over').hide();
 
 // GLOBAL VARIABLES
 
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var unanswered = 0;
-
 var countdown = 11;
 var intervalId;
-
 var userHasClickedOnAnswer = false;
 var timedOut = false;
-
 var blazingIndex = 0;
 var correctAnswerIndex;
+var correctAnswerText;
+
+// ARRAY TO HOLD QUESTIONS AND ANSWERS
 
 var qaArray = [
 	{
 		question: "How far is the Moon moving away from the Earth each year?",
 		answers: ["3.8cm", "3.8m", "3.8km", "3.8 light years"],
-		correctAnswerIndex: 0
+		correctAnswerIndex: 0,
+		correctAnswerText: "3.8cm"
 		// pic_correct: 'PATH',
 		// pic_wrong: 'PATH',
 	},
 	{
 		question: "In what month is the Earth closest to the sun?",
 		answers: ["February", "January", "September", "December"],
-		correctAnswerIndex: 1
+		correctAnswerIndex: 1,
+		correctAnswerText: "January"
 	},
 	{
 		question: "All the planets in the solar system rotate in the same direction, except which?",
 		answers: ["Neptune", "Uranus", "Mars", "Venus"],
-		correctAnswerIndex: 3
+		correctAnswerIndex: 3,
+		correctAnswerText: "Venus"
 	},
 	{
 		question: "The Sun's core releases the energy equivalent of _______ nuclear bombs every second.",
 		answers: ["100,000", "100 million", "100 billion", "100 trillion"],
-		correctAnswerIndex: 2
+		correctAnswerIndex: 2,
+		correctAnswerText: "100 billion"
 	},
 	{
 		question: "We can only detect about _______ of the matter in the universe.",
 		answers: ["5%", "10%", "15%", "20%"],
-		correctAnswerIndex: 0
+		correctAnswerIndex: 0,
+		correctAnswerText: "5%"
 	}
 ];
 
@@ -104,28 +109,23 @@ function userGuess() {
 
 function correctAnswer() {
 	userHasClickedOnAnswer = true;
-	// $('#main-panel').empty().html("<h3>Correct!</h3>");
 	$('#results').html("<h3>Correct!</h3>");
 	correctAnswers++;
-	console.log("Correct answers: " + correctAnswers);
 	setTimeout(advance, 3000);
 }
 
 function incorrectAnswer() {
 	userHasClickedOnAnswer = true;
-	// $('#main-panel').empty().html("<h3>Stupid! You're so stupid! <br><br> The correct answer was XXXXX.</h3>");
-	$('#results').html("<h3>Wrong!</h3>");
+	$('#results').html("<h3>Wrong! The correct answer was " + qaArray[blazingIndex].correctAnswerText + ".</h3>");
+	$('#imgif').html("<img src='http://gph.is/QEbSYA'>");
 	incorrectAnswers++;
-	console.log("Incorrect answers: " + incorrectAnswers);
 	setTimeout(advance, 3000);
 }
 
 function timeUp() {
 	timedOut = true;
-	// $('#main-panel').empty().html("<h3>Time's up! <br><br> The correct answer was XXXXX.</h3>");
-	$('#results').html("<h3>Time's up!</h3>");
+	$('#results').html("<h3>Time's up! The correct answer was " + qaArray[blazingIndex].correctAnswerText + ".</h3>");
 	unanswered++;
-	console.log("Unanswered: " + unanswered);
 	setTimeout(advance, 3000);
 }
 
@@ -151,19 +151,36 @@ function advance() {
 function resultScreen() {
 
 	stop();
+	timedOut = false;
+	// $('#countdown').hide();
 
 	$("#questions").html("<h3>All done!</h3");
 	$('#answer0').html("<h3>Correct answers: " + correctAnswers + "</h3>");
 	$('#answer1').html("<h3>Incorrect answers: " + incorrectAnswers + "</h3");
 	$('#answer2').html("<h3>Unanswered: " + unanswered + "</h3>");
 	$('#answer3').html(" ");
-	$('#results').html("<h3>Start over?</h3>"); // need to add reset
+
+	$('#start-over').show().on("click", startOver);
 
 }
 
 function startOver() {
-	$("button").show();
+	
+	blazingIndex = 0;
+	correctAnswers = 0;
+	incorrectAnswers = 0;
+	unanswered = 0;
+	countdown = 11;
+
+	$("#questions").empty();
+	$('#answer0').empty();
+	$('#answer1').empty();
+	$('#answer2').empty();
+	$('#answer3').empty();
+
+	$('#countdown').show();
 	launchQA();
+
 }
 
 // MAIN PROCESS
@@ -171,10 +188,3 @@ function startOver() {
 $("#start-game").on("click", launchQA);
 
 });
-
-
-
-
-
-
-
