@@ -16,6 +16,7 @@ var timedOut = false;
 var blazingIndex = 0;
 var correctAnswerIndex;
 var correctAnswerText;
+var correctImg;
 
 // ARRAY TO HOLD QUESTIONS AND ANSWERS
 
@@ -45,7 +46,7 @@ var qaArray = [
 		correctAnswerText: "5%"
 	},
 	{
-		question: "The Sun accounts for 99% of our solar system's mass.",
+		question: "The Sun accounts for _______ of our solar system's mass.",
 		answers: ["25%", "50%", "75%", "99%"],
 		correctAnswerIndex: 3,
 		correctAnswerText: "99%"
@@ -57,6 +58,24 @@ var qaArray = [
 		correctAnswerText: "3.8cm"
 		// pic_correct: 'PATH',
 		// pic_wrong: 'PATH',
+	},
+	{
+		question: "How many Earths would fit inside the Sun?",
+		answers: ["130,000", "1,300,000", "13,000,000", "130,000,000"],
+		correctAnswerIndex: 1,
+		correctAnswerText: "1,300,000"
+	},
+	{
+		question: "What is the diameter of the Milky Way?",
+		answers: ["10,000 light years", "100,000 light years", "1 million light years", "10 million light years"],
+		correctAnswerIndex: 1,
+		correctAnswerText: "100,000 light years"
+	},
+	{
+		question: "The largest black hole on record has a mass of more than _______ suns?",
+		answers: ["1 billion", "5 billion", "10 billion", "20 billion"],
+		correctAnswerIndex: 3,
+		correctAnswerText: "20 billion"
 	}
 ];
 
@@ -68,7 +87,7 @@ function startCountdown() {
 
 function decrement() {
 	countdown--;
-	$("#countdown").html("<h2>Time left before implosion: " + countdown + "</h2>");
+	$("#countdown").html("<h2>Time left until supernova: " + countdown + "</h2>");
 		if (countdown === 0) {
 	    stop();
 	    timeUp();
@@ -82,6 +101,7 @@ function stop() {
 function launchQA() {
 
 	$("button").hide();
+	$(".image").hide();
 	countdown = 11;
 	startCountdown();
 	$('#countdown').show();
@@ -116,22 +136,24 @@ function userGuess() {
 
 function correctAnswer() {
 	userHasClickedOnAnswer = true;
-	$('#results').html("<h3>Correct!</h3>");
+	$('#results').html("<h3>Yeehaw!</h3>");
+	$('.image').show().html("<img id='imgif' src='assets/images/tobias.gif'>");
 	correctAnswers++;
 	setTimeout(advance, 3000);
 }
 
 function incorrectAnswer() {
 	userHasClickedOnAnswer = true;
-	$('#results').html("<h3>Wrong! The correct answer is " + qaArray[blazingIndex].correctAnswerText + ". <br>Your body is hereby committed to the cold vacuum of space.</h3>");
-	$('#imgif').html("<img src='http://gph.is/QEbSYA'>");
+	$('#results').html("<h3>Space fail! You've been gobbled up by a black hole. <br> The correct answer is " + qaArray[blazingIndex].correctAnswerText + ".</h3>");
+	$('.image').show().html("<img id='imgif' src='assets/images/hungry_blackhole.gif'/>");
 	incorrectAnswers++;
 	setTimeout(advance, 3000);
 }
 
 function timeUp() {
 	timedOut = true;
-	$('#results').html("<h3>Time's up! (Although time is just a construct.) <br> The correct answer is " + qaArray[blazingIndex].correctAnswerText + ".</h3>");
+	$('#results').html("<h3>Time's up! Ya done been supernova'd. <br> The correct answer is " + qaArray[blazingIndex].correctAnswerText + ".</h3>");
+	$('.image').show().html("<img id='imgif' src='assets/images/supernova.gif'>");
 	$('#countdown').hide().empty();
 	unanswered++;
 	setTimeout(advance, 3000);
@@ -162,6 +184,7 @@ function resultScreen() {
 	stop();
 	timedOut = false;
 	$('#countdown').hide();
+	$(".image").hide();
 
 	$("#questions").html("<h3>All done!</h3");
 	$('#answer0').html("<h3>Correct answers: " + correctAnswers + "</h3>");

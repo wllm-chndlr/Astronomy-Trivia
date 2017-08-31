@@ -27,22 +27,21 @@
     <div class="container">
 
       <div class="jumbotron">
-        <h1>ASTRONOMY TRIVIA</h1>
+        <h1 id="title">ASTRONOMY TRIVIA</h1>
       </div>
 
       <div class="row"> 
-
-        <div class="col-md-2">
+        <div class="col-md-12">
           <div class=button">
-            <button id="start-game" class="btn btn-primary btn-lg">Start game</button>
-            <button id="start-over" class="btn btn-primary btn-lg">Start over</button>
+            <button id="start-game" class="btn btn-primary btn-lg">START GAME</button>
+            <button id="start-over" class="btn btn-primary btn-lg">START OVER</button>
           </div>
-          <!-- <div class="countdown">
-            <div id="countdown"></div>
-          </div> -->
         </div>
+      </div>
 
-        <div class="col-md-10">
+      <div class="row">
+        
+        <div class="col-md-8">
           <div class="panel panel-default" id="main">
             <div class="panel-body" id="main-panel">
               <div id="questions"></div>
@@ -54,11 +53,22 @@
               <img id="imgif">
             </div>
           </div> 
+        </div>
+
+        <div class="col-md-4">
+          <div class="image">
+            <img id="imgif">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
           <div class="countdown">
             <div id="countdown"></div>
           </div>
         </div>
-
       </div>
 
     </div>

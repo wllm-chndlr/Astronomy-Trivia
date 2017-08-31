@@ -9,47 +9,91 @@ body {
 }
 
 .jumbotron {
-	/*text-align: center;*/
+	text-align: right;
 	color: #fff;
 	/*background-color: #F96D00;*/
+	height: 200px;
 	background-color: transparent;
 	font-family: 'Anton', sans-serif;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	opacity: 0.8;
-	background-image: url(../images/space_stars.jpg);
+	background-image: url(../images/space_stars_crop.jpg);
+}
+
+h1 {
+	color: white;  /* Fallback: assume this color ON TOP of image */
+	background: url(../images/space_stars_darkish.jpg) no-repeat;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.jumbotron h1 {
+	font-size: 100px;
+	margin-top: 0px;
+	letter-spacing: 150%;
 }
 
 #main {
 	height: 400px;
 	color: #fff;
-	/*background-color: #393E46;*/
-	/*background-color: #cc3b36;*/
 	background-color: transparent;
-	background-image: url(../images/space_stars.jpg);
+	background-image: url(../images/space_stars_crop.jpg);
 	padding-left: 50px;
 	opacity: 0.8;
+	border: 0px solid #fff;
 }
 
 #start-game, #start-over {
-	/* background-color: #393E46; */
-	background-color: transparent;
-	border-color: #fff;	
-	font-family: 'Oswald', sans-serif;
-	color: #fff;
-	margin-bottom: 10px;
+	/* background-color: transparent; */
+	/* color: #fff; */
+	font-family: 'Anton', sans-serif;
 	opacity: 0.8;
+	/* background-image: url(../images/space_stars_darkish.jpg); */
+	margin-bottom: 20px;
+	color: white;  /* Fallback: assume this color ON TOP of image */
+	background: url(../images/space_stars_darkish.jpg) no-repeat;
+	-webkit-background-clip: text;
+	/* -webkit-text-fill-color: transparent; */
+}
+
+.btn-primary {
+	border: 1px solid white;
+	/* background-color: transparent; */
+	background-image: url(../images/space_stars.jpg);
+}
+
+.btn-primary:hover {
+	border: 1px solid orangered;
+}
+
+.btn.btn-primary.btn-lg {
+	background-image: url(../images/space_stars.jpg);
 }
 
 #answer0, #answer1, #answer2, #answer3 {
 	cursor: pointer;
 }
 
+.answer {
+	padding-left: 30px;
+}
+
+.answer:hover {
+	color: orangered;
+}
+
 .countdown {
 	font-family: 'Oswald', sans-serif;
 	color: #fff;
 	opacity: 0.8;
+	padding-left: 20px;
+	text-align: center;
 }
 
 #results {
-	color: orange;
+	color: orangered;
+}
+
+#imgif {
+	max-width: 100%;
 }
