@@ -9,21 +9,20 @@ $(document).ready(function() {
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var unanswered = 0;
-var countdown = 11;
+var countdown = 21;
 var intervalId;
 var userHasClickedOnAnswer = false;
 var timedOut = false;
 var blazingIndex = 0;
 var correctAnswerIndex;
 var correctAnswerText;
-var correctImg;
 
 // ARRAY TO HOLD QUESTIONS AND ANSWERS
 
 var qaArray = [
 	{
 		question: "Neutron stars can spin at a rate of _______ rotations per second.",
-		answers: ["10", "100", "300", "600"],
+		answers: ["50", "100", "300", "600"],
 		correctAnswerIndex: 3,
 		correctAnswerText: "600"
 	},
@@ -56,8 +55,6 @@ var qaArray = [
 		answers: ["3.8cm", "3.8m", "3.8km", "3.8 light years"],
 		correctAnswerIndex: 0,
 		correctAnswerText: "3.8cm"
-		// pic_correct: 'PATH',
-		// pic_wrong: 'PATH',
 	},
 	{
 		question: "How many Earths would fit inside the Sun?",
@@ -89,8 +86,8 @@ function decrement() {
 	countdown--;
 	$("#countdown").html("<h2>Time left until supernova: " + countdown + "</h2>");
 		if (countdown === 0) {
-	    stop();
-	    timeUp();
+	   	stop();
+	   	timeUp();
 		}
 }
 
@@ -102,7 +99,7 @@ function launchQA() {
 
 	$("button").fadeOut("slow");
 	$(".image").fadeOut("slow");
-	countdown = 11;
+	countdown = 21;
 	startCountdown();
 	$('#countdown').fadeIn("slow");
 
@@ -119,35 +116,35 @@ function launchQA() {
 function userGuess() {
 
 	$('.answer').click(function() {
-	  stop();
-	  $('#countdown').fadeOut("slow").empty();
+		stop();
+		$('#countdown').fadeOut("slow").empty();
   	
   	if (userHasClickedOnAnswer == false && timedOut !== true) {
   	var userAnswer = $('.answer').index(this);
 	  	if (userAnswer === qaArray[blazingIndex].correctAnswerIndex) {
-				correctAnswer();
+			correctAnswer();
 	  	}
 	  	else {
-				incorrectAnswer();
+			incorrectAnswer();
 	  	}
-		}
-  })
+	}
+  	})
 }
 
 function correctAnswer() {
 	userHasClickedOnAnswer = true;
-	$('#results').html("<h3>YEEHAW!</h3>");
+	$('#results').html("<h3>YEEHAW, SPACE COWBOY!</h3>");
 	$('.image').fadeIn("slow").html("<img id='imgif' src='assets/images/tobias.gif'>");
 	correctAnswers++;
-	setTimeout(advance, 3000);
+	setTimeout(advance, 5000);
 }
 
 function incorrectAnswer() {
 	userHasClickedOnAnswer = true;
 	$('#results').html("<h2>SPACE FAIL!<br>The correct answer is " + qaArray[blazingIndex].correctAnswerText + ".</h2>");
-	$('.image').fadeIn("slow").html("<img id='imgif' src='assets/images/hungry_blackhole.gif'/>");
+	$('.image').fadeIn("slow").html("<img id='imgif' src='assets/images/trouble_web.gif'/>");
 	incorrectAnswers++;
-	setTimeout(advance, 3000);
+	setTimeout(advance, 5000);
 }
 
 function timeUp() {
@@ -156,7 +153,7 @@ function timeUp() {
 	$('.image').fadeIn("slow").html("<img id='imgif' src='assets/images/supernova.gif'>");
 	$('#countdown').fadeOut("slow").empty();
 	unanswered++;
-	setTimeout(advance, 3000);
+	setTimeout(advance, 5000);
 }
 
 function advance() {
@@ -199,7 +196,7 @@ function startOver() {
 	correctAnswers = 0;
 	incorrectAnswers = 0;
 	unanswered = 0;
-	countdown = 11;
+	countdown = 21;
 
 	$("#questions").empty();
 	$('#answer0').empty();

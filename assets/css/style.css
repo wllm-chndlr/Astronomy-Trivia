@@ -1,5 +1,4 @@
 html {
-	background-color: #fff;
 	background-image: url(../images/space_stars.jpg);
 }
 
@@ -11,7 +10,6 @@ body {
 
 .jumbotron {
 	text-align: right;
-	color: #fff;
 	height: 150px;
 	background-color: transparent;
 	font-family: 'Anton', sans-serif;
@@ -34,7 +32,6 @@ h1 {
 .jumbotron h1 {
 	font-size: 100px;
 	margin-top: 0px;
-	letter-spacing: 150%;
 }
 
 #main {
@@ -58,7 +55,6 @@ h1 {
 .btn-primary {
 	border: 0px solid #2c2c36;
 	font-size: 20px;
-	background-image: url(../images/space_stars.jpg);
 }
 
 .btn-primary:hover {
@@ -98,5 +94,22 @@ h1 {
 
 #imgif {
 	max-width: 100%;
+	width: 100%;
 	opacity: 0.8;
 }
+
+@media (max-width: 991px) {
+	.jumbotron h1 {
+		font-size: 45px;
+		padding-top: 30px;
+	}
+ }
+
+ @media (max-width: 604px) {
+	#main {
+		height: 500px;
+	}
+	#answer0, #answer1, #answer2, #answer3 {
+		max-width: 50%;
+	}
+ }
