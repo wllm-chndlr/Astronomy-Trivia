@@ -6,13 +6,13 @@ html {
 body {
 	font-family: 'Oswald', sans-serif;
 	background-color: transparent;
+	color: #2c2c36;
 }
 
 .jumbotron {
 	text-align: right;
 	color: #fff;
-	/*background-color: #F96D00;*/
-	height: 200px;
+	height: 150px;
 	background-color: transparent;
 	font-family: 'Anton', sans-serif;
 	margin-bottom: 30px;
@@ -20,8 +20,12 @@ body {
 	background-image: url(../images/space_stars_crop.jpg);
 }
 
+div.jumbotron {
+	padding-top: 20px;
+}
+
 h1 {
-	color: white;  /* Fallback: assume this color ON TOP of image */
+	color: white;
 	background: url(../images/space_stars_darkish.jpg) no-repeat;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -34,8 +38,8 @@ h1 {
 }
 
 #main {
-	height: 400px;
-	color: #fff;
+	height: 450px;
+	color: #fceeb1;
 	background-color: transparent;
 	background-image: url(../images/space_stars_crop.jpg);
 	padding-left: 50px;
@@ -44,34 +48,30 @@ h1 {
 }
 
 #start-game, #start-over {
-	/* background-color: transparent; */
-	/* color: #fff; */
+	color: #2c2c36;
 	font-family: 'Anton', sans-serif;
-	opacity: 0.8;
-	/* background-image: url(../images/space_stars_darkish.jpg); */
-	margin-bottom: 20px;
-	color: white;  /* Fallback: assume this color ON TOP of image */
-	background: url(../images/space_stars_darkish.jpg) no-repeat;
-	-webkit-background-clip: text;
-	/* -webkit-text-fill-color: transparent; */
+	opacity: 0.6;
+	background-image: url(../images/space_stars_btn2.jpg);
+	margin-bottom: 20px;	
 }
 
 .btn-primary {
-	border: 1px solid white;
-	/* background-color: transparent; */
+	border: 0px solid #2c2c36;
+	font-size: 20px;
 	background-image: url(../images/space_stars.jpg);
 }
 
 .btn-primary:hover {
-	border: 1px solid orangered;
-}
-
-.btn.btn-primary.btn-lg {
-	background-image: url(../images/space_stars.jpg);
+	border: 1px solid #df4824;
 }
 
 #answer0, #answer1, #answer2, #answer3 {
 	cursor: pointer;
+	max-width: 33%;
+}
+
+#answer0:active, #answer1:active, #answer2:active, #answer3:active {
+	transform: translate(2px, 2px);
 }
 
 .answer {
@@ -79,21 +79,24 @@ h1 {
 }
 
 .answer:hover {
-	color: orangered;
+	color: #df4824;
 }
 
 .countdown {
 	font-family: 'Oswald', sans-serif;
-	color: #fff;
+	color: #fceeb1;
 	opacity: 0.8;
 	padding-left: 20px;
 	text-align: center;
 }
 
 #results {
-	color: orangered;
+	color: #df4824;
+	text-align: right;
+	padding-right: 30px;
 }
 
 #imgif {
 	max-width: 100%;
+	opacity: 0.8;
 }

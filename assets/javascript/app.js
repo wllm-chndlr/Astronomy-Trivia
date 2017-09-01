@@ -100,11 +100,11 @@ function stop() {
 
 function launchQA() {
 
-	$("button").hide();
-	$(".image").hide();
+	$("button").fadeOut("slow");
+	$(".image").fadeOut("slow");
 	countdown = 11;
 	startCountdown();
-	$('#countdown').show();
+	$('#countdown').fadeIn("slow");
 
 	$("#questions").html("<h2>" + qaArray[blazingIndex].question + "</h2>");
 	$("#answer0").html("<h3>" + qaArray[blazingIndex].answers[0] + "</h3>");
@@ -120,7 +120,7 @@ function userGuess() {
 
 	$('.answer').click(function() {
 	  stop();
-	  $('#countdown').hide().empty();
+	  $('#countdown').fadeOut("slow").empty();
   	
   	if (userHasClickedOnAnswer == false && timedOut !== true) {
   	var userAnswer = $('.answer').index(this);
@@ -136,25 +136,25 @@ function userGuess() {
 
 function correctAnswer() {
 	userHasClickedOnAnswer = true;
-	$('#results').html("<h3>Yeehaw!</h3>");
-	$('.image').show().html("<img id='imgif' src='assets/images/tobias.gif'>");
+	$('#results').html("<h3>YEEHAW!</h3>");
+	$('.image').fadeIn("slow").html("<img id='imgif' src='assets/images/tobias.gif'>");
 	correctAnswers++;
 	setTimeout(advance, 3000);
 }
 
 function incorrectAnswer() {
 	userHasClickedOnAnswer = true;
-	$('#results').html("<h3>Space fail! You've been gobbled up by a black hole. <br> The correct answer is " + qaArray[blazingIndex].correctAnswerText + ".</h3>");
-	$('.image').show().html("<img id='imgif' src='assets/images/hungry_blackhole.gif'/>");
+	$('#results').html("<h2>SPACE FAIL!<br>The correct answer is " + qaArray[blazingIndex].correctAnswerText + ".</h2>");
+	$('.image').fadeIn("slow").html("<img id='imgif' src='assets/images/hungry_blackhole.gif'/>");
 	incorrectAnswers++;
 	setTimeout(advance, 3000);
 }
 
 function timeUp() {
 	timedOut = true;
-	$('#results').html("<h3>Time's up! Ya done been supernova'd. <br> The correct answer is " + qaArray[blazingIndex].correctAnswerText + ".</h3>");
-	$('.image').show().html("<img id='imgif' src='assets/images/supernova.gif'>");
-	$('#countdown').hide().empty();
+	$('#results').html("<h2>[SPACE]TIME'S UP!<br>The correct answer is " + qaArray[blazingIndex].correctAnswerText + ".</h2>");
+	$('.image').fadeIn("slow").html("<img id='imgif' src='assets/images/supernova.gif'>");
+	$('#countdown').fadeOut("slow").empty();
 	unanswered++;
 	setTimeout(advance, 3000);
 }
@@ -169,13 +169,10 @@ function advance() {
 
 	if (blazingIndex < qaArray.length) {
 		launchQA();
-		// countdown = 11;
 	}
 	else {
 		resultScreen();
 	}
-
-	// setTimeout(advance, 3000);
 	
 }
 
@@ -183,7 +180,7 @@ function resultScreen() {
 
 	stop();
 	timedOut = false;
-	$('#countdown').hide();
+	$('#countdown').fadeOut("slow");
 	$(".image").hide();
 
 	$("#questions").html("<h3>All done!</h3");
@@ -192,7 +189,7 @@ function resultScreen() {
 	$('#answer2').html("<h3>Unanswered: " + unanswered + "</h3>");
 	$('#answer3').html(" ");
 
-	$('#start-over').show().on("click", startOver);
+	$('#start-over').fadeIn("slow").on("click", startOver);
 
 }
 
@@ -210,7 +207,7 @@ function startOver() {
 	$('#answer2').empty();
 	$('#answer3').empty();
 
-	$('#countdown').show();
+	$('#countdown').fadeIn("slow");
 	launchQA();
 
 }
